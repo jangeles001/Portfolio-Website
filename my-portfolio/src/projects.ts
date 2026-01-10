@@ -16,8 +16,7 @@ export const projects: Project[] = [
     title: "Space Travel Simulator",
     description: "",
     techStack: ["React", "JavaScript", "Vite", "CSS"],
-    githubUrl: "https://github.com/yourusername/portfolio",
-    liveUrl: "https://yourportfolio.example.com"
+    githubUrl: "https://github.com/jangeles001/Space-Travel-Project",
   },
   {
     id: "3",
@@ -32,7 +31,6 @@ export const projects: Project[] = [
     title: "Portfolio",
     description: "This portfolio website",
     techStack: ["React", "TypeScript", "Vite", "TailwindCSS"],
-    githubUrl: "https://github.com/yourusername/portfolio",
-    liveUrl: "https://yourportfolio.example.com"
+    githubUrl: "https://github.com/jangeles001/Portfolio-Website",
   },
 ];
