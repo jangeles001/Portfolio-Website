@@ -1,6 +1,7 @@
-type level = "Beginner" | "Proficient" | "Expert" 
+type techType = "Frontend" | "Backend" | "Both";
 
 export interface Skill {
     name: string;
-    SkillLevel: level;
+    techType: techType;
+    details: string;
 }

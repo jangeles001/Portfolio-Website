@@ -1,11 +1,13 @@
 import type { Project } from "./types";
+import fitSyncPreview from "./assets/projects/fitsync _preview.png";
 
 export const projects: Project[] = [
   {
     id: "1",
     title: "FitSync",
-    description: "Fitness tracker app using React & TypeScript",
+    description: "Fitness tracker app using React & JavaScript",
     techStack: ["React", "JavaScript", "Vite", "TailwindCSS", "Tanstack", "Zustand"],
+    previewImg: fitSyncPreview,
     githubUrl: "https://github.com/yourusername/fitsync",
     liveUrl: "https://fitsync.example.com"
   },

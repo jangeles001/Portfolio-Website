@@ -2,16 +2,15 @@ import './styles/App.css'
 import { ProjectsSection } from './sections/Projects'
 import { SkillsSection } from './sections/Skills'
 import { HeroSection } from './sections/Hero'
+import { SkillsDetailsSection } from './sections/SkillsDetails'
 
 function App() {
 
   return (
-    <div>
-      <img className='ml-auto' src=""></img>
-      <h1>Jaime Angeles</h1>
-      <p>Fullstack Developer focused on performance, clean UI, and maintainable code.</p>
+    <div className="flex flex-col mx-auto w-screen h-screen">
       <HeroSection />
       <SkillsSection />
+      <SkillsDetailsSection />
       <ProjectsSection />
     </div>
   )
