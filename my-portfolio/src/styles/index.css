@@ -1,11 +1,81 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @layer components {
-   .surface-cards {
-     @apply bg-[#111827] text-[#e5e7eb] border border-[#1f2933] rounded mb-10 opacity-90 p-5 hover:opacity-100
-   }
+  .surface-cards {
+    @apply bg-[#111827] text-[#e5e7eb] border border-[#1f2933] rounded mb-10 opacity-90 p-5 hover:opacity-100
+  }
+.carousel-slide {
+  opacity: 1;
 }
 
+.carousel-slide.is-active {
+  opacity: 0;
+  animation-delay: 80ms;
+  animation: slide-fade-in 0.6s ease-out forwards;
+}
+
+  .carousel-next {
+    --offset: 24px;
+  }
+
+  .carousel-prev {
+    --offset: -24px; /* fade in from left */
+  }
+}
+
+@layer utilities {
+  .delay-1 {
+    animation-delay: 300ms
+  }
+
+  .delay-2 {
+    animation-delay: 600ms;
+  }
+
+  .delay-3 {
+    animation-delay: 900ms;
+  }
+}
+
+@theme {
+  --animate-fade-in-up: fade-in-up 1.5s ease-out both;
+  --animate-float: float 0
+  0.6s ease-in-out infinite;
+}
+
+@keyframes float {
+  from { 
+     transform: "translateY(0px)" 
+  }
+  to {
+     transform: "translateY(-10px)" 
+  }
+}
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(var(--offset, 0));
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
