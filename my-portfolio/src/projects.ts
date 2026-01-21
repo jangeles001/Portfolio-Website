@@ -21,10 +21,10 @@ export const projects: Project[] = [
   {
     id: "3",
     title: "Pokemon Card Game",
-    description: "",
+    description: "A fun Pokémon card game built with React and TypeScript. Players select Pokémon to battle against a CPU opponent. The game uses type advantages (like Rock-Paper-Scissors) to determine the winner of each attack.",
     techStack: ["React", "JavaScript", "CSS"],
-    githubUrl: "https://github.com/yourusername/portfolio",
-    liveUrl: "https://yourportfolio.example.com"
+    githubUrl: "https://github.com/jangeles001/Pokemon_Game",
+    liveUrl: "hhttps://jangeles001.github.io/Pokemon_Game/"
   },
   {
     id: "4",
