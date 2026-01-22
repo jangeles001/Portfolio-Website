@@ -5,17 +5,17 @@
 
 @layer components {
   .surface-cards {
-    @apply bg-[#111827] text-[#e5e7eb] border border-[#1f2933] rounded mb-10 opacity-90 p-5 hover:opacity-100
+    @apply bg-[#111827] text-[#e5e7eb] border border-[#1f2933] rounded mb-10 opacity-90 p-5 hover:opacity-100;
   }
-.carousel-slide {
-  opacity: 1;
-}
+  .carousel-slide {
+    opacity: 1;
+  }
 
-.carousel-slide.is-active {
-  opacity: 0;
-  animation-delay: 80ms;
-  animation: slide-fade-in 0.6s ease-out forwards;
-}
+  .carousel-slide.is-active {
+    opacity: 0;
+    animation-delay: 80ms;
+    animation: slide-fade-in 0.6s ease-out forwards;
+  }
 
   .carousel-next {
     --offset: 24px;
@@ -28,7 +28,7 @@
 
 @layer utilities {
   .delay-1 {
-    animation-delay: 300ms
+    animation-delay: 300ms;
   }
 
   .delay-2 {
@@ -42,16 +42,15 @@
 
 @theme {
   --animate-fade-in-up: fade-in-up 1.5s ease-out both;
-  --animate-float: float 0
-  0.6s ease-in-out infinite;
+  --animate-float: float 0 0.6s ease-in-out infinite;
 }
 
 @keyframes float {
-  from { 
-     transform: "translateY(0px)" 
+  from {
+    transform: "translateY(0px)";
   }
   to {
-     transform: "translateY(-10px)" 
+    transform: "translateY(-10px)";
   }
 }
 
@@ -75,6 +74,12 @@
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+.ibm-plex-mono-regular {
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
 }
 
 :root {

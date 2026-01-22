@@ -6,12 +6,10 @@ interface SkillBarProps{
 
 export function SkillBubble({ Skill }: SkillBarProps){
     return (
-        <div 
-        className="border border-gray-500 rounded-2xl shadow-lg w-min h-min pl-5 pr-5
-        transform transition-all duration-300 ease-out hover:scale-105 hover:-translate-y-1
-        hover:shadow-xl"
+        <span 
+        className="inline-flex items-center rounded-full bg-gray-50 px-1.5 py-0.5 text-sm font-sm text-black inset-ring inset-ring-gray-500/10"
         >
-            <h4 className="font-bold text-center font-sm"><strong>{Skill.name}</strong></h4>
-        </div>
+            <h4 className="text-center"><strong>{Skill.name}</strong></h4>
+        </span>
     )
 }
