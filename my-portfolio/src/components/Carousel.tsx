@@ -1,4 +1,5 @@
-import { useEffect, useEffectEvent, useState, useRef, type ReactNode, Children } from 'react'
+import { useEffect, useCallback, useState, useRef, type ReactNode, Children } from 'react'
+import { usePageVisibility } from '../hooks/usePageVisibility';
 
 interface CarouselProps {
     interval?: number;
@@ -7,101 +8,114 @@ interface CarouselProps {
 
 export default function Carousel({interval = 7000, children }: CarouselProps){
 
-    const [ activeIndex, setActiveIndex ] = useState(1);
-    const [ isTransitioning, setIsTransitioning ] = useState(false);
-    const timerID = useRef<number |null>(null);
+  const [activeIndex, setActiveIndex] = useState(1);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const timeoutRef = useRef<number | null>(null);
+  const slides = Children.toArray(children);
+  const totalSlides = slides.length;
 
-    const slides = Children.toArray(children);
-    const totalSlides = slides.length;
-
-    const clearTimer = () => {
-        if(timerID.current) {
-            clearInterval(timerID.current)
-            timerID.current = null;
-        }
-    };
-
-    const nextSlide = (reset = true) => {
-        if (isTransitioning) return;
-        setIsTransitioning(true);
-        setActiveIndex((prev) => prev + 1);
-        if (reset) {
-            resetTimer()
-        };
+  // Clear any existing timer
+  const clearTimer = useCallback(() => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+      timeoutRef.current = null;
     }
+  }, []);
 
-    const resetTimer = () => {
-        clearTimer();
-        timerID.current = setInterval(() => {
-            nextSlide(false);
-        }, interval)
-    }
+  // Move to the next slide
+  const nextSlide = useCallback(() => {
+    if (isTransitioning) return;
 
-     const reset = useEffectEvent(() => {
-        resetTimer();
-    })
+    setIsTransitioning(true);
+    setActiveIndex((prev) => prev + 1);
 
-    useEffect(() => {
-        reset();
-        
-        return clearTimer;
+    window.setTimeout(() => {
+      setIsTransitioning(false);
+    }, 1600);
+  }, [isTransitioning]);
 
-    }, [interval]);
+  // Schedule the next slide transition
+  const scheduleNext = useCallback(() => {
+    clearTimer();
 
-    const handleTransitionEnd = () => {
+    timeoutRef.current = window.setTimeout(() => {
+      nextSlide();
+    }, interval);
+  }, [interval, clearTimer, nextSlide]);
+
+  usePageVisibility({
+    onHide: clearTimer,
+    onShow: () => {
+      setIsTransitioning(false);
+      scheduleNext();
+    },
+  });
+
+  // Start the carousel
+  useEffect(() => {
+    scheduleNext();
+    return clearTimer;
+  }, [scheduleNext, clearTimer]);
+
+  // Handle the end of CSS transition
+  const handleTransitionEnd = () => {
     if (activeIndex === totalSlides + 1) {
       setIsTransitioning(false);
       setActiveIndex(1);
+      scheduleNext();
       return;
     }
+
     if (activeIndex === 0) {
       setIsTransitioning(false);
       setActiveIndex(totalSlides);
+      scheduleNext();
       return;
     }
 
     setIsTransitioning(false);
+    scheduleNext();
   };
 
-    return (
-  <div className="relative w-full max-w-4xl overflow-hidden">
-    <div
-      className={`flex ${isTransitioning ? "transition-transform duration-1500" : ""}`}
-      style={{ transform: `translateX(-${activeIndex * 100}%)` }}
-      onTransitionEnd={handleTransitionEnd}
-    >
-      {/* Clone last slide at start */}
-      <div className="flex w-full flex-shrink-0 justify-center items-center">
-        <div className="carousel-slide">
-          {slides[totalSlides - 1]}
+  return (
+    <div className="relative w-full max-w-4xl overflow-hidden">
+      <div
+        className={`flex ${isTransitioning ? "transition-transform duration-1500" : ""}`}
+        style={{ transform: `translateX(-${activeIndex * 100}%)` }}
+        onTransitionEnd={handleTransitionEnd}
+      >
+        {/* Clone last slide at start */}
+        <div className="flex w-full flex-shrink-0 justify-center items-center">
+          <div className="carousel-slide">
+            {slides[totalSlides - 1]}
+          </div>
         </div>
-      </div>
 
-      {/* Actual slides */}
-      {slides.map((slide, i) => (
-          <div
-          key={i}
-          className="w-full flex-shrink-0 flex justify-center items-center"
-          >
+        {/* Actual slides */}
+        {slides.map((slide, i) => (
             <div
-            className={`carousel-slide ${
-              isTransitioning && i + 1 === activeIndex
-              ? "is-active carousel-next"
-              : ""}`
-            }
+            key={i}
+            className="w-full flex-shrink-0 flex justify-center items-center"
             >
-              {slide}
-            </div>
-        </div>
-      ))}
+              <div
+              className={`carousel-slide ${
+                isTransitioning && i + 1 === activeIndex
+                ? "is-active carousel-next"
+                : ""}`
+              }
+              >
+                {slide}
+              </div>
+          </div>
+        ))}
 
-      {/* Clone first slide at end */}
-      <div className="flex w-full flex-shrink-0 justify-center items-center">
-        <div className="carousel-slide">
-          {slides[0]}
+        {/* Clone first slide at end */}
+        <div className="flex w-full flex-shrink-0 justify-center items-center">
+          <div className="carousel-slide">
+            {slides[0]}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 }
