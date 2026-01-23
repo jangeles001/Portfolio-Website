@@ -1,6 +1,7 @@
 import type { Project } from "./types";
 import fitSyncPreview from "./assets/projects/fitsync _preview.png";
 import pokemonGame from "./assets/projects/Pokemon_Game.png";
+import spaceTravelPreview from "./assets/projects/Space-Travel-Preview.png"
 
 export const projects: Project[] = [
   {
@@ -17,7 +18,9 @@ export const projects: Project[] = [
     title: "Space Travel Simulator",
     description: "",
     techStack: ["React", "JavaScript", "Vite", "CSS"],
+    previewImg: spaceTravelPreview,
     githubUrl: "https://github.com/jangeles001/Space-Travel-Project",
+    liveUrl: "https://jangeles001.github.io/Space-Travel-Project/",
   },
   {
     id: "3",
