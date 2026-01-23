@@ -17,9 +17,8 @@ export function WebBrowser(){
                     <h2 className="text-2xl font-semibold mb-2">
                     <div className="flex-1 h-[20px] w-1/2 bg-black/10 rounded"></div>
                     </h2>
-                    <p className="text-slate-400 max-w-xl">
-                        <div className="mt- flex-1 h-[20px] w-1/2 bg-black/10 rounded"></div>
-                    </p>
+                    <p className="text-slate-400 max-w-xl"></p>
+                    <div className="mt- flex-1 h-[20px] w-1/2 bg-black/10 rounded"></div>
                     <div className="mt-8 grid grid-cols-3 gap-4">
                         <div className="h-28 rounded-xl bg-black/5"></div>
                         <div className="h-28 rounded-xl bg-black/5"></div>

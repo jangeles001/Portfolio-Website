@@ -16,8 +16,8 @@ export const projects: Project[] = [
   {
     id: "2",
     title: "Space Travel Simulator",
-    description: "",
-    techStack: ["React", "JavaScript", "Vite", "CSS"],
+    description: "This project is a front-end web application that lets users design and command their own interplanetary fleet. Players can create custom spaceships—complete with unique names, descriptions, and crew capacities. Users can then deploy the ships to distant planets to lead missions, manage planetary populations. The app focuses on state management and UI flow, using Redux to coordinate ship creation, planetary data, and expedition logistics across the interface. Built with React and Vite and integrates a Mock API to simulate backend services and persistent data.",
+    techStack: ["React", "JavaScript", "Vite", "Redux", "CSS"],
     previewImg: spaceTravelPreview,
     githubUrl: "https://github.com/jangeles001/Space-Travel-Project",
     liveUrl: "https://jangeles001.github.io/Space-Travel-Project/",
