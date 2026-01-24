@@ -1,7 +1,8 @@
 import { useContactMe } from "../hooks/useContactMe";
+import ReCAPTCHA from "react-google-recaptcha";
 
 export function ContactMe(){
-    const { formData, formErrors, handleFormChange, handleFormSubmit, isPending } = useContactMe();
+    const { formData, formErrors, recaptchaRef, setCaptchaValue, handleFormChange, handleFormSubmit, isPending } = useContactMe();
 
     return (
         <section id="contact-section" className="py-20 px-4 bg-gray-100 dark:bg-gray-900">
@@ -47,6 +48,11 @@ export function ContactMe(){
                         </textarea>
                         <span className="text-red-500 text-sm">{formErrors?.message}</span>
                     </div>
+                        <ReCAPTCHA
+                        sitekey={import.meta.env.VITE_RECAPTCHA_SITE_KEY}
+                        ref={recaptchaRef}
+                        onChange={(value) => setCaptchaValue(value)}
+                        />
                     <button
                         type="submit"
                         disabled={isPending}

@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Toaster position="top-right" />
-      <div className="flex flex-col mx-auto w-screen h-screen from-slate-950 to-slate-900">
+      <div className="flex flex-col min-h-screen w-full overflow-x-hidden from-slate-950 to-slate-900">
         <div className="max-w-7xl mx-auto px-6 pt-24">
           <HeroSection />
           <SkillsSection />

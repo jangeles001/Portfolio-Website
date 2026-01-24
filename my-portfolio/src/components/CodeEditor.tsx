@@ -1,7 +1,24 @@
 export function CodeEditor() {
   return (
     <div className="motion-safe:opacity-0 will-change-[opacity,transform] motion-safe:animate-fade-in-up delay-2 ibm-plex-mono-regular">
-      <div className="relative w-[600px] max-w-[95%] h-[400px] mt-5 mx-auto rounded-2xl bg-gray-700 shadow-lg backdrop-blur-sm will-change-[opacity,transform] motion-safe:animate-float">
+      <div className="
+          relative
+          w-full
+          max-w-sm
+          sm:max-w-md
+          md:max-w-lg
+          lg:max-w-xl
+          xl:max-w-2xl
+          mx-auto
+          rounded-2xl
+          border
+          border-white/10
+          bg-white/20
+          shadow-md
+          backdrop-blur-sm
+          will-change-[opacity,transform]
+          motion-safe:animate-float
+        ">
         
         {/* Top bar */}
         <div className="flex items-center gap-2 px-4 py-3 border-b">

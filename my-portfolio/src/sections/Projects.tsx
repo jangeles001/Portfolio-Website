@@ -3,9 +3,9 @@ import { projects } from "../projects";
 
 export function ProjectsSection(){
     return (
-        <section id="project-section" className="p-10 gap-5">
+        <section id="project-section" className="flex flex-col p-5 w-full justify-center items-center md:justify-start md:items-start">
             <h2 className="text-lg p-5 pl-0">Projects</h2>
-            <hr></hr>
+            <hr className="border-t-2 border-slate-500 my-6 w-full"></hr>
             { projects.map((project) => {
                 return (
                     <ProjectCard key={`${project.id}`} project={project}></ProjectCard>)

@@ -22,7 +22,7 @@
   }
 
   .carousel-prev {
-    --offset: -24px; /* fade in from left */
+    --offset: -24px;
   }
 }
 

@@ -3,9 +3,9 @@ import { SkillCard } from "../components/SkillCard"
 
 export function SkillsDetailsSection(){
     return (
-        <section className="flex flex-col p-5 w-full">
+        <section className="flex flex-col p-5 w-full justify-center items-center md:justify-start md:items-start">
             <h2 className="pb-5">Skills & Technologies</h2>
-            <hr></hr>
+            <hr className="border-t-2 border-slate-500 my-6 w-full"></hr>
             <div className="mb-4 text-lg font-medium">
                 <div className="grid gap-4 sm:grid-cols-2">
                     { 

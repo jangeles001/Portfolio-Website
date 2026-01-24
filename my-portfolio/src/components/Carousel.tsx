@@ -78,15 +78,15 @@ export default function Carousel({interval = 7000, children }: CarouselProps){
   };
 
   return (
-    <div className="relative w-full max-w-4xl overflow-hidden">
+    <div className="relative w-full max-w-6xl overflow-hidden">
       <div
-        className={`flex ${isTransitioning ? "transition-transform duration-1500" : ""}`}
+        className={`flex w-full ${isTransitioning ? "transition-transform duration-1500" : ""}`}
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
         onTransitionEnd={handleTransitionEnd}
       >
         {/* Clone last slide at start */}
-        <div className="flex w-full flex-shrink-0 justify-center items-center">
-          <div className="carousel-slide">
+        <div className="w-full flex flex-shrink-0 items-center justify-center">
+          <div className="carousel-slide w-full">
             {slides[totalSlides - 1]}
           </div>
         </div>
@@ -95,10 +95,10 @@ export default function Carousel({interval = 7000, children }: CarouselProps){
         {slides.map((slide, i) => (
             <div
             key={i}
-            className="w-full flex-shrink-0 flex justify-center items-center"
+            className="w-full flex flex-shrink-0 justify-center items-center"
             >
               <div
-              className={`carousel-slide ${
+              className={`carousel-slide w-full ${
                 isTransitioning && i + 1 === activeIndex
                 ? "is-active carousel-next"
                 : ""}`
@@ -110,8 +110,8 @@ export default function Carousel({interval = 7000, children }: CarouselProps){
         ))}
 
         {/* Clone first slide at end */}
-        <div className="flex w-full flex-shrink-0 justify-center items-center">
-          <div className="carousel-slide">
+        <div className= "w-full flex flex-shrink-0 justify-center items-center">
+          <div className="carousel-slide w-full">
             {slides[0]}
           </div>
         </div>
