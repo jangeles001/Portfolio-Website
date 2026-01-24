@@ -2,7 +2,7 @@ import type { Project } from "./types";
 import fitSyncPreview from "./assets/projects/fitsync _preview.png";
 import pokemonGame from "./assets/projects/Pokemon_Game.png";
 import spaceTravelPreview from "./assets/projects/Space-Travel-Preview.png"
-import portfolio from "./assets/projects/portfolio.png";
+import portfolio from "./assets/projects/Portfolio.png";
 
 export const projects: Project[] = [
   {
