@@ -78,7 +78,7 @@ export default function Carousel({interval = 7000, children }: CarouselProps){
   };
 
   return (
-    <div className="relative w-full max-w-6xl overflow-hidden">
+    <div className="relative w-full max-w-7xl overflow-hidden">
       <div
         className={`flex w-full ${isTransitioning ? "transition-transform duration-1500" : ""}`}
         style={{ transform: `translateX(-${activeIndex * 100}%)` }}
