@@ -6,7 +6,7 @@ interface ProjectCardProps {
 
 export function ProjectCard({ project } :ProjectCardProps){
     return (
-    <div className="surface-card border grid grid-cols-1 mt-5 md:grid-cols-2 overflow-hidden">
+    <div className="surface-card border grid grid-cols-1 mt-5 md:grid-cols-2 overflow-hidden w-full">
 
       <div className="p-6 flex flex-col gap-4">
         <h3>{project.title}</h3>
